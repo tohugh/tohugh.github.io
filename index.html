@@ -260,20 +260,48 @@
         
           <span itemprop="articleBody">
             
-            搭建过程###工具：
+              <h2 id="u642D_u5EFA_u8FC7_u7A0B"><a href="#u642D_u5EFA_u8FC7_u7A0B" class="headerlink" title="搭建过程"></a>搭建过程</h2><p>###工具：</p>
+<ul>
+<li>Github For Windows <a href="https://desktop.github.com/" title="直接下载安装" target="_blank" rel="external">https://desktop.github.com/</a></li>
+<li>Git <a href="https://git-scm.com/" title="直接下载安装" target="_blank" rel="external">https://git-scm.com/</a></li>
+<li>Node.js <a href="https://nodejs.org/en/" title="直接下载安装" target="_blank" rel="external">https://nodejs.org/en/</a></li>
+<li>Hexo （安装好上述软件之后）<ul>
+<li>打开Github下面的GitShell，输入下面的命令行：<ul>
+<li><code>npm install hexo-cli -g</code></li>
+<li><code>npm install hexo --save</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###初始化配置</p>
+<ol>
+<li>创建目录如：<code>E:\myblog\hexo</code></li>
+<li>GitShell中定位到该目录输入下面的命令行，folder 即<strong>tohugh.github.io</strong><ol>
+<li><code>hexo init &lt;folder&gt;</code></li>
+<li><code>cd &lt;folder&gt;</code></li>
+<li><code>npm install</code></li>
+</ol>
+</li>
+<li><p>安装hexo插件</p>
+<p> <img src="http://7xpu2r.com1.z0.glb.clouddn.com/%E6%8F%92%E4%BB%B6%E5%91%BD%E4%BB%A4%E8%A1%8C.jpg" alt=""></p>
+</li>
+<li><p>查看效果：输入命令行<code>hexo server</code>，浏览器地址栏输入<code>localhost:4000</code></p>
+</li>
+</ol>
+<p>###同步到Github</p>
+<ul>
+<li><p>配置deployment</p>
+<pre><code>- git config --global user.name &quot;yourname&quot;
+- git config --global user.email &quot;youremail&quot;
+</code></pre></li>
+<li>在_config.yml文件中，找到Deployment，然后按照如下修改：<br>  <img src="http://7xpu2r.com1.z0.glb.clouddn.com/deploy%E5%91%BD%E4%BB%A4%E8%A1%8C.jpg" alt=""></li>
+<li><code>hexo g</code> 生成静态网页</li>
+<li><code>hexo d</code> 开始部署</li>
+</ul>
 
-Github For Windows https://desktop.github.com/
-Git https://git-scm.com/
-Node.js https://nodejs.org/en/
-Hexo （安装好上述软件之后）
-打开Github下面的GitShel
-            ...
+            
           </span>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/06/终于搭建好了/#more" rel="contents">
-              閱讀全文 &raquo;
-            </a>
-          </div>
         
       
     </div>
