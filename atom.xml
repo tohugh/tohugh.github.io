@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[hugh's blog]]></title>
+  
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://yoursite.com/"/>
+  <updated>2016-01-06T03:07:32.114Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name><![CDATA[hugh]]></name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[终于搭建好我的博客了！]]></title>
+    <link href="http://yoursite.com/2016/01/06/%E7%BB%88%E4%BA%8E%E6%90%AD%E5%BB%BA%E5%A5%BD%E4%BA%86/"/>
+    <id>http://yoursite.com/2016/01/06/终于搭建好了/</id>
+    <published>2016-01-06T03:07:32.139Z</published>
+    <updated>2016-01-06T03:07:32.114Z</updated>
+    <content type="html"><![CDATA[<p>第一次接触github page和hexo。</p>
+<h2 id="u540E_u9762_u7684_u518D_u6162_u6162_u5199_u5427"><a href="#u540E_u9762_u7684_u518D_u6162_u6162_u5199_u5427" class="headerlink" title="后面的再慢慢写吧"></a>后面的再慢慢写吧</h2>]]></content>
+    <summary type="html">
+    <![CDATA[<p>第一次接触github page和hexo。</p>
+<h2 id="u540E_u9762_u7684_u518D_u6162_u6162_u5199_u5427"><a href="#u540E_u9762_u7684_u518D_u6162_u6162_u5199_u]]>
+    </summary>
+    
+  </entry>
+  
+</feed>
