@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-01-07T02:53:11.402Z</updated>
+  <updated>2016-01-22T16:04:31.297Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[终于搭建好我的博客了！]]></title>
-    <link href="http://yoursite.com/2016/01/22/Test/"/>
-    <id>http://yoursite.com/2016/01/22/Test/</id>
-    <published>2016-01-22T15:35:49.713Z</published>
-    <updated>2016-01-07T02:53:11.402Z</updated>
+    <title><![CDATA[Test！]]></title>
+    <link href="http://yoursite.com/2016/01/23/Test/"/>
+    <id>http://yoursite.com/2016/01/23/Test/</id>
+    <published>2016-01-22T16:04:31.297Z</published>
+    <updated>2016-01-22T16:04:31.297Z</updated>
     <content type="html"><![CDATA[<p>摘要：Hexo搭建Blog的过程<br><a id="more"></a></p>
 <h2 id="u642D_u5EFA_u8FC7_u7A0B"><a href="#u642D_u5EFA_u8FC7_u7A0B" class="headerlink" title="搭建过程"></a>搭建过程</h2><h3 id="u5DE5_u5177_uFF1A"><a href="#u5DE5_u5177_uFF1A" class="headerlink" title="工具："></a>工具：</h3><ul>
 <li><a href="https://desktop.github.com/" target="_blank" rel="external">Github For Windows</a></li>
