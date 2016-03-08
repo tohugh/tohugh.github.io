@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-01-27T08:56:15.859Z</updated>
+  <updated>2016-02-02T15:16:14.659Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,214 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Material Design遇到的问题]]></title>
+    <link href="http://yoursite.com/2016/02/02/Material%20Design%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2016/02/02/Material Design遇到的问题/</id>
+    <published>2016-02-02T15:16:14.659Z</published>
+    <updated>2016-02-02T15:16:14.659Z</updated>
+    <content type="html"><![CDATA[<p>摘要：Material Design<br><a id="more"></a></p>
+<p>###控件篇</p>
+<hr>
+<ul>
+<li><strong>参考</strong>：<strong><a href="http://blog.csdn.net/feiduclear_up/article/details/46457433" target="_blank" rel="external">Android5.x新特性之 Toolbar和Theme的使用</a></strong></li>
+<li><strong>参考</strong>：<strong><a href="https://segmentfault.com/a/1190000003695173" target="_blank" rel="external">Material Design样式及ToolBar使用初探</a></strong></li>
+</ul>
+<p>####toolbar的使用：</p>
+<ol>
+<li>在<code>styles.xml</code>下，把<code>&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.DarkActionBar&quot;&gt;</code>修改为<code>&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;</code></li>
+<li>在布局文件下添加<code>v7</code>提供的 <code>Toolbar</code></li>
+<li><p>代码添加Toolbar:</p>
+<pre><code>    /**
+ * 初始化Toolbar
+ */
+private void initToolbar() {
+    mToolbar = (Toolbar) findViewById(R.id.toolbar);
+    mToolbar.setTitleTextColor(getResources().getColor(R.color.white));//标题颜色
+    setSupportActionBar(mToolbar);
+    //getSupportActionBar().setDisplayShowTitleEnabled(false);
+    mToolbar.setTitle(&quot;MyNotes&quot;);
+    //toolbar.setSubtitle(&quot;副标题&quot;);
+}
+</code></pre></li>
+<li><p>在toolbar添加按钮</p>
+<ol>
+<li><p>新建menu/main_menu，加入如下代码，ndroid:orderInCategory设置menu的优先级，数字越小优先级越高。优先级低的图标在toolbar中menu图标放不下时，自动折叠到最右侧的图标下：</p>
+<pre><code>&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    tools:context=&quot;.MainActivity&quot;&gt;
+    &lt;item
+        android:id=&quot;@+id/titlebar_edit&quot;
+        android:icon=&quot;@drawable/ic_edit&quot;
+        android:orderInCategory=&quot;1&quot;
+        android:title=&quot;search&quot;
+        app:showAsAction=&quot;ifRoom&quot; /&gt;
+
+    &lt;item
+        android:id=&quot;@+id/titlebar_setting&quot;
+        android:icon=&quot;@drawable/ic_more&quot;
+        android:orderInCategory=&quot;1&quot;
+        android:title=&quot;setting&quot;
+        app:showAsAction=&quot;ifRoom&quot; /&gt;
+&lt;/menu&gt;
+</code></pre></li>
+<li><p>在mainactivity中添加代码,不然menu菜单不会显示:</p>
+<pre><code>@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.menu_main, menu);
+    return true;
+}
+</code></pre></li>
+<li><p>设置menu的点击事件</p>
+<pre><code>toolbar.setOnMenuItemClickListener(this);//menu的点击事件
+
+@Override
+public boolean onMenuItemClick(MenuItem item) {
+    switch (item.getItemId()) {
+        case R.id.titlebar_search:
+            //TODO 搜索
+            break;
+        case R.id.titlebar_collect:
+            //TODO 收藏
+            break;
+        case R.id.titlebar_setting:
+            //TODO 设置
+            break;
+    }
+return true;
+}
+</code></pre></li>
+</ol>
+</li>
+<li><p>修改toolbar标题栏的底色</p>
+<pre><code>xml
+@style/ThemeOverlay.Appcompat.Dark--&gt;黑底白字
+@style/ThemeOverlay.Appcompat.Light--&gt;白底黑字
+</code></pre></li>
+</ol>
+<p>####DrawerLayout</p>
+<ul>
+<li><p>在xml文件中添加DrawerLayout</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;android.support.v4.widget.DrawerLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:id=&quot;@+id/drawer_layout&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:showIn=&quot;@layout/activity_main&quot;&gt;
+
+&lt;!-- the main content view --&gt;
+
+&lt;FrameLayout
+    android:id=&quot;@+id/content_frame&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot; /&gt;
+
+&lt;!-- the navigetion view --&gt;
+
+&lt;android.support.design.widget.NavigationView
+    android:id=&quot;@+id/navigation_view&quot;
+    android:layout_width=&quot;240dp&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:layout_gravity=&quot;start&quot;
+    app:headerLayout=&quot;@layout/drawer_header&quot;
+    app:menu=&quot;@menu/drawer&quot; /&gt;
+</code></pre></li>
+</ul>
+<pre><code>&lt;/android.support.v4.widget.DrawerLayout&gt; 
+</code></pre><ul>
+<li><p>在java代码中设置抽屉开关</p>
+<pre><code>/**
+ * 初始化DrawerLayout
+ */
+private void initDrawerLayout() {
+    mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+    mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.open, R.string.close);
+    /*抽屉指示器/启示与链接DrawerLayout的状态同步。*/
+    mDrawerToggle.syncState();
+    mDrawerLayout.setDrawerListener(mDrawerToggle);
+}
+</code></pre></li>
+</ul>
+<p>####Navigationview的使用</p>
+<ul>
+<li>在build.gradle添加<code>compile &#39;com.android.support:design:23.1.1&#39;</code></li>
+<li><p>在xml文件中添加navigationview</p>
+<pre><code>&lt;android.support.design.widget.NavigationView
+        android:id=&quot;@+id/navigation_view&quot;
+        android:layout_width=&quot;240dp&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:layout_gravity=&quot;start&quot;
+       &lt;!--headerlayout不是必须的--&gt;
+        app:headerLayout=&quot;@layout/drawer_header&quot;
+        app:menu=&quot;@menu/drawer&quot; /&gt;
+</code></pre></li>
+<li><p>新建res/menu/drawer,撰写一下代码，navigationview就有菜单了</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    tools:context=&quot;.MainActivity&quot;&gt;
+    &lt;!-- checkableBehavior 代表组中只有一个菜单可以checked--&gt;
+    &lt;group android:checkableBehavior=&quot;single&quot;&gt;
+        &lt;item
+            android:id=&quot;@+id/navigation_item_book&quot;
+            android:icon=&quot;@drawable/ic_favorite&quot;
+            android:title=&quot;@string/navigation_book&quot; /&gt;
+        &lt;item
+            android:id=&quot;@+id/navigation_item_example&quot;
+            android:icon=&quot;@drawable/ic_favorite&quot;
+            android:title=&quot;@string/navigation_example&quot; /&gt;
+        &lt;item
+            android:id=&quot;@+id/navigation_item_blog&quot;
+            android:icon=&quot;@drawable/ic_favorite&quot;
+            android:title=&quot;@string/navigation_my_blog&quot; /&gt;
+
+        &lt;item
+            android:id=&quot;@+id/navigation_item_about&quot;
+            android:icon=&quot;@drawable/ic_favorite&quot;
+            android:title=&quot;@string/navigation_about&quot; /&gt;
+    &lt;/group&gt;
+&lt;/menu&gt;
+</code></pre></li>
+</ul>
+<p>###RecyclerCView的使用</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>摘要：Material Design<br>]]>
+    
+    </summary>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Material Design" scheme="http://yoursite.com/tags/Material-Design/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Android Studio问题汇总]]></title>
+    <link href="http://yoursite.com/2016/01/28/Android%20Studio%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/"/>
+    <id>http://yoursite.com/2016/01/28/Android Studio问题汇总/</id>
+    <published>2016-01-28T03:30:19.488Z</published>
+    <updated>2016-01-28T03:30:19.488Z</updated>
+    <content type="html"><![CDATA[<p>摘要：使用AS过程中遇到的问题<br><a id="more"></a></p>
+<pre><code>Q:在xml布局文件预览出现以下问题
+Rendering Problems The following classes could not be found:
+android.support.v7.internal.app.WindowDecorActionBar (Fix Build Path, Create Class) Tip: Try to build the project.
+
+A:&quot;ctrl+sihft+n&quot;定位到styles.xml文件，把parent=&quot;Theme.AppCompat.Light.DarkActionBar&quot;
+修改为parent=&quot;Base.Theme.AppCompat.Light.DarkActionBar&quot;
+</code></pre>]]></content>
+    <summary type="html">
+    <![CDATA[<p>摘要：使用AS过程中遇到的问题<br>]]>
+    
+    </summary>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Android,获取图片和视频的缩略图]]></title>
