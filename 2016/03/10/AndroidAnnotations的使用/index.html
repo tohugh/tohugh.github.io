@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="Android," />
+  <meta name="keywords" content="Android，AndroidAnnotations," />
 
 
 
@@ -47,16 +47,16 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="摘要：Android,获取图片和视频的缩略图的代码及注释。">
+<meta name="description" content="摘要：AndroidAnnotations在AS中的环境搭建和注意事项。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android,获取图片和视频的缩略图">
-<meta property="og:url" content="http://yoursite.com/2016/01/27/Android生成缩略图/index.html">
+<meta property="og:title" content="AndroidAnnotations的使用">
+<meta property="og:url" content="http://yoursite.com/2016/03/10/AndroidAnnotations的使用/index.html">
 <meta property="og:site_name" content="hugh's blog">
-<meta property="og:description" content="摘要：Android,获取图片和视频的缩略图的代码及注释。">
-<meta property="og:updated_time" content="2016-01-27T08:56:15.859Z">
+<meta property="og:description" content="摘要：AndroidAnnotations在AS中的环境搭建和注意事项。">
+<meta property="og:updated_time" content="2016-03-10T09:50:53.782Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android,获取图片和视频的缩略图">
-<meta name="twitter:description" content="摘要：Android,获取图片和视频的缩略图的代码及注释。">
+<meta name="twitter:title" content="AndroidAnnotations的使用">
+<meta name="twitter:description" content="摘要：AndroidAnnotations在AS中的环境搭建和注意事项。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -68,7 +68,7 @@
 
 
 
-  <title> Android,获取图片和视频的缩略图 | hugh's blog </title>
+  <title> AndroidAnnotations的使用 | hugh's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -214,7 +214,7 @@
             
             
               
-                Android,获取图片和视频的缩略图
+                AndroidAnnotations的使用
               
             
           </h1>
@@ -223,8 +223,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-01-27T16:56:15+08:00" content="2016-01-27">
-              2016-01-27
+            <time itemprop="dateCreated" datetime="2016-03-10T17:50:53+08:00" content="2016-03-10">
+              2016-03-10
             </time>
           </span>
 
@@ -234,8 +234,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/27/Android生成缩略图/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/27/Android生成缩略图/" itemprop="commentsCount"></span>
+                <a href="/2016/03/10/AndroidAnnotations的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/10/AndroidAnnotations的使用/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -254,51 +254,108 @@
       
 
       
-        <span itemprop="articleBody"><p>摘要：Android,获取图片和视频的缩略图的代码及注释。<br><a id="more"></a></p>
-<pre><code> /**
- * @param uri：图片保存路径
- * @param width: 缩略图的宽
- * @param height：缩略图的高
- * @return bitmap:缩略图
- * 获取缩略图
- */
-public Bitmap getImageThumbnail(String uri,int width,int height){
-    //创建bitmap对象
-    Bitmap bitmap = null;
-    BitmapFactory.Options options = new BitmapFactory.Options();
-    /*
-    *如果设置为true的话不会返回一个真正的bitmap，仅仅会取回宽高，这样就不会占用太多内存导致频繁的oom
-     */
-    options.inJustDecodeBounds = true;
-    bitmap = BitmapFactory.decodeFile(uri,options);
-    /*
-    * options.outWidth:图片原始宽
-    * options.outHeight:图片原始高
-    * */
-    int beWidth = options.outWidth / width;//缩略图的宽
-    int beHeight = options.outHeight / height;//缩略图的高
-    int be = 1;
-    /*
-    *计算缩放比
-     */
-    if(beWidth&lt;beHeight){
-        be = beWidth;
-    }else{
-        be = beHeight;
-    }if (be &lt;= 0){
-        be = 1;
-    }
-    options.inSampleSize = be;
-    /*
-    * 这次要把inJustDecodeBounds设置为false是因为返回的是真正的bitmap
-    * */
-    options.inJustDecodeBounds = false;
-    bitmap = BitmapFactory.decodeFile(uri, options);//根据比例压缩过的图像
-    /*使用ThumbnailUtils生成的图像不会被拉伸*/
-    bitmap = ThumbnailUtils.extractThumbnail(bitmap, width, height, ThumbnailUtils.OPTIONS_RECYCLE_INPUT);
-    return bitmap;
+        <span itemprop="articleBody"><p>摘要：AndroidAnnotations在AS中的环境搭建和注意事项。<br><a id="more"></a></p>
+<p><strong>Github源码</strong>：<strong><a href="https://github.com/tohugh/MyAnnotationsDemo" target="_blank" rel="external">AndroidAnnotations的简单使用</a></strong></p>
+<h3 id="u73AF_u5883_u642D_u5EFA_3A"><a href="#u73AF_u5883_u642D_u5EFA_3A" class="headerlink" title="环境搭建:"></a>环境搭建:</h3><ol>
+<li><p>Project的build.gradle</p>
+<pre><code>buildscript {
+repositories {
+jcenter()
 }
-</code></pre></span>
+dependencies {
+classpath &apos;com.android.tools.build:gradle:1.3.0&apos;
+
+// NOTE: Do not place your application dependencies here; they belong
+// in the individual module build.gradle files
+
+//配置Android annotations
+classpath &apos;com.neenbedankt.gradle.plugins:android-apt:1.8&apos;
+}
+}
+</code></pre><p>关键词:<code>classpath &#39;com.neenbedankt.gradle.plugins:android-apt:1.8&#39;</code></p>
+</li>
+<li><p>Module的build.gradle</p>
+<pre><code>apply plugin: &apos;com.android.application&apos;
+//配置Android annotations
+apply plugin: &apos;android-apt&apos;
+def AAVersion = &apos;3.3.2&apos;
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion &quot;23.0.2&quot;
+
+    defaultConfig {
+        applicationId &quot;com.hugh.myannotationsdemo&quot;
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName &quot;1.0&quot;
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.pro&apos;
+        }
+    }
+}
+
+//配置Android annotations
+apt {
+    arguments {
+        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
+        // if you have multiple outputs (when using splits), you may want to have other index than 0
+
+        // you should set your package name here if you are using different application IDs
+        // resourcePackageName &quot;your.package.name&quot;
+
+        // You can set optional annotation processing options here, like these commented options:
+        // logLevel &apos;INFO&apos;
+        // logFile &apos;/var/log/aa.log&apos;
+    }
+}
+
+dependencies {
+    compile fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])
+    testCompile &apos;junit:junit:4.12&apos;
+    compile &apos;com.android.support:appcompat-v7:23.2.0&apos;
+    //配置Android annotations
+    apt &quot;org.androidannotations:androidannotations:$AAVersion&quot;
+    compile &quot;org.androidannotations:androidannotations-api:$AAVersion&quot;
+
+}
+</code></pre><p> 关键词：<br>`//配置Android annotations</p>
+<pre><code>    apply plugin: &apos;android-apt&apos;
+    def AAVersion = &apos;3.3.2&apos;`    
+
+//配置Android annotations
+apt {
+    arguments {
+        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
+        // if you have multiple outputs (when using splits), you may want to have other index than 0
+
+        // you should set your package name here if you are using different application IDs
+        // resourcePackageName &quot;your.package.name&quot;
+
+        // You can set optional annotation processing options here, like these commented options:
+        // logLevel &apos;INFO&apos;
+        // logFile &apos;/var/log/aa.log&apos;
+    }
+}
+
+//配置Android annotations
+    apt &quot;org.androidannotations:androidannotations:$AAVersion&quot;
+    compile &quot;org.androidannotations:androidannotations-api:$AAVersion&quot;
+</code></pre></li>
+<li><p>重新编译</p>
+</li>
+</ol>
+<h4 id="u6CE8_u610F_u4E8B_u9879_uFF1A"><a href="#u6CE8_u610F_u4E8B_u9879_uFF1A" class="headerlink" title="注意事项："></a>注意事项：</h4><ol>
+<li>注册同名的Activity_</li>
+<li>View的修饰符不能是private</li>
+<li>用注解注释的方法不能使private</li>
+<li>大型项目一般不适用此框架</li>
+</ol>
+</span>
       
     </div>
 
@@ -306,7 +363,7 @@ public Bitmap getImageThumbnail(String uri,int width,int height){
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag">#Android</a>
+            <a href="/tags/Android，AndroidAnnotations/" rel="tag">#Android，AndroidAnnotations</a>
           
         </div>
       
@@ -315,17 +372,13 @@ public Bitmap getImageThumbnail(String uri,int width,int height){
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/27/我的博客搭建好了/" rel="next" title="我的博客搭建好了！">
-                <i class="fa fa-chevron-left"></i> 我的博客搭建好了！
+              <a href="/2016/02/02/Material Design遇到的问题/" rel="next" title="Material Design遇到的问题">
+                <i class="fa fa-chevron-left"></i> Material Design遇到的问题
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/01/28/Android Studio问题汇总/" rel="prev" title="Android Studio问题汇总">
-                Android Studio问题汇总 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -350,8 +403,8 @@ public Bitmap getImageThumbnail(String uri,int width,int height){
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2016/01/27/Android生成缩略图/"
-                   data-title="Android,获取图片和视频的缩略图" data-url="http://yoursite.com/2016/01/27/Android生成缩略图/">
+              <div class="ds-thread" data-thread-key="2016/03/10/AndroidAnnotations的使用/"
+                   data-title="AndroidAnnotations的使用" data-url="http://yoursite.com/2016/03/10/AndroidAnnotations的使用/">
               </div>
             
           </div>
@@ -457,7 +510,7 @@ public Bitmap getImageThumbnail(String uri,int width,int height){
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u73AF_u5883_u642D_u5EFA_3A"><span class="nav-number">1.</span> <span class="nav-text">环境搭建:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u6CE8_u610F_u4E8B_u9879_uFF1A"><span class="nav-number">1.1.</span> <span class="nav-text">注意事项：</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

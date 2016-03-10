@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-02-02T15:16:14.659Z</updated>
+  <updated>2016-03-10T09:50:53.782Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,123 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[AndroidAnnotations的使用]]></title>
+    <link href="http://yoursite.com/2016/03/10/AndroidAnnotations%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2016/03/10/AndroidAnnotations的使用/</id>
+    <published>2016-03-10T09:50:53.782Z</published>
+    <updated>2016-03-10T09:50:53.782Z</updated>
+    <content type="html"><![CDATA[<p>摘要：AndroidAnnotations在AS中的环境搭建和注意事项。<br><a id="more"></a></p>
+<p><strong>Github源码</strong>：<strong><a href="https://github.com/tohugh/MyAnnotationsDemo" target="_blank" rel="external">AndroidAnnotations的简单使用</a></strong></p>
+<h3 id="u73AF_u5883_u642D_u5EFA_3A"><a href="#u73AF_u5883_u642D_u5EFA_3A" class="headerlink" title="环境搭建:"></a>环境搭建:</h3><ol>
+<li><p>Project的build.gradle</p>
+<pre><code>buildscript {
+repositories {
+jcenter()
+}
+dependencies {
+classpath &apos;com.android.tools.build:gradle:1.3.0&apos;
+
+// NOTE: Do not place your application dependencies here; they belong
+// in the individual module build.gradle files
+
+//配置Android annotations
+classpath &apos;com.neenbedankt.gradle.plugins:android-apt:1.8&apos;
+}
+}
+</code></pre><p>关键词:<code>classpath &#39;com.neenbedankt.gradle.plugins:android-apt:1.8&#39;</code></p>
+</li>
+<li><p>Module的build.gradle</p>
+<pre><code>apply plugin: &apos;com.android.application&apos;
+//配置Android annotations
+apply plugin: &apos;android-apt&apos;
+def AAVersion = &apos;3.3.2&apos;
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion &quot;23.0.2&quot;
+
+    defaultConfig {
+        applicationId &quot;com.hugh.myannotationsdemo&quot;
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName &quot;1.0&quot;
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.pro&apos;
+        }
+    }
+}
+
+//配置Android annotations
+apt {
+    arguments {
+        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
+        // if you have multiple outputs (when using splits), you may want to have other index than 0
+
+        // you should set your package name here if you are using different application IDs
+        // resourcePackageName &quot;your.package.name&quot;
+
+        // You can set optional annotation processing options here, like these commented options:
+        // logLevel &apos;INFO&apos;
+        // logFile &apos;/var/log/aa.log&apos;
+    }
+}
+
+dependencies {
+    compile fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])
+    testCompile &apos;junit:junit:4.12&apos;
+    compile &apos;com.android.support:appcompat-v7:23.2.0&apos;
+    //配置Android annotations
+    apt &quot;org.androidannotations:androidannotations:$AAVersion&quot;
+    compile &quot;org.androidannotations:androidannotations-api:$AAVersion&quot;
+
+}
+</code></pre><p> 关键词：<br>`//配置Android annotations</p>
+<pre><code>    apply plugin: &apos;android-apt&apos;
+    def AAVersion = &apos;3.3.2&apos;`    
+
+//配置Android annotations
+apt {
+    arguments {
+        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
+        // if you have multiple outputs (when using splits), you may want to have other index than 0
+
+        // you should set your package name here if you are using different application IDs
+        // resourcePackageName &quot;your.package.name&quot;
+
+        // You can set optional annotation processing options here, like these commented options:
+        // logLevel &apos;INFO&apos;
+        // logFile &apos;/var/log/aa.log&apos;
+    }
+}
+
+//配置Android annotations
+    apt &quot;org.androidannotations:androidannotations:$AAVersion&quot;
+    compile &quot;org.androidannotations:androidannotations-api:$AAVersion&quot;
+</code></pre></li>
+<li><p>重新编译</p>
+</li>
+</ol>
+<h4 id="u6CE8_u610F_u4E8B_u9879_uFF1A"><a href="#u6CE8_u610F_u4E8B_u9879_uFF1A" class="headerlink" title="注意事项："></a>注意事项：</h4><ol>
+<li>注册同名的Activity_</li>
+<li>View的修饰符不能是private</li>
+<li>用注解注释的方法不能使private</li>
+<li>大型项目一般不适用此框架</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>摘要：AndroidAnnotations在AS中的环境搭建和注意事项。<br>]]>
+    
+    </summary>
+    
+      <category term="Android，AndroidAnnotations" scheme="http://yoursite.com/tags/Android%EF%BC%8CAndroidAnnotations/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Material Design遇到的问题]]></title>
