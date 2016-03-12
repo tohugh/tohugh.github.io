@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-10T09:50:53.782Z</updated>
+  <updated>2016-03-12T03:27:46.148Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[优雅地退出 App！]]></title>
+    <link href="http://yoursite.com/2016/03/12/%E4%BC%98%E9%9B%85%E5%9C%B0%E9%80%80%E5%87%BAApp/"/>
+    <id>http://yoursite.com/2016/03/12/优雅地退出App/</id>
+    <published>2016-03-12T03:27:46.148Z</published>
+    <updated>2016-03-12T03:27:46.148Z</updated>
+    <content type="html"><![CDATA[<p>摘要：使用 SingleTask 退出App<br><a id="more"></a></p>
+<p>###<a href="https://desktop.github.com/" target="_blank" rel="external">参考:soul_code的专栏 Android退出应用最优雅的方式(改进版)</a></p>
+<h4 id="SingleTask_3A__u5728_u5F53_u524D_u6808_u4E2D_u67E5_u8BE2_u662F_u5426_u5B58_u5728Activity_u7684_u5B9E_u4F8B_uFF0C_u5982_u679C_u5B58_u5728_uFF0C_u5219_u5C06_u5176_u81F3_u4E8E_u6808_u9876_uFF0C_u5E76_u5C06_u5176_u4E4B_u4E0A_u7684_u6240_u6709Activity_u6808_u79FB_u9664_u3002"><a href="#SingleTask_3A__u5728_u5F53_u524D_u6808_u4E2D_u67E5_u8BE2_u662F_u5426_u5B58_u5728Activity_u7684_u5B9E_u4F8B_uFF0C_u5982_u679C_u5B58_u5728_uFF0C_u5219_u5C06_u5176_u81F3_u4E8E_u6808_u9876_uFF0C_u5E76_u5C06_u5176_u4E4B_u4E0A_u7684_u6240_u6709Activity_u6808_u79FB_u9664_u3002" class="headerlink" title="SingleTask: 在当前栈中查询是否存在Activity的实例，如果存在，则将其至于栈顶，并将其之上的所有Activity栈移除。"></a>SingleTask: 在当前栈中查询是否存在Activity的实例，如果存在，则将其至于栈顶，并将其之上的所有Activity栈移除。</h4><p>###思路</p>
+<ol>
+<li><p>设置MainActivity的加载模式为 singleTask</p>
+<p> <code>android:launchMode=&quot;singleTask&quot;</code></p>
+</li>
+<li><p>重写MainActivity中的onNewIntent方法</p>
+<p> <code>注意：如果在栈中已经有该Activity的实例，就重用该实例(会调用实例的onNewIntent())。重用时，会让该实例回到栈顶，因此在它上面的实例将会被移除栈。如果栈中不存在该实例，将会创建新的实例放入栈中（此时不会调用onNewIntent()）。</code></p>
+<pre><code>private static final String TAG_EXIT = &quot;exit&quot;;    
+
+@Override
+protected void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
+    if (intent != null) {
+        boolean isExit = intent.getBooleanExtra(TAG_EXIT, false);
+        if (isExit) {
+            this.finish();
+        }
+    }
+}
+</code></pre></li>
+</ol>
+<ol>
+<li><p>需要退出时在Intent中添加退出的tag</p>
+<pre><code>Intent intent = new Intent(this,MainActivity.class);
+intent.putExtra(MainActivity.TAG_EXIT, true);
+startActivity(intent);
+</code></pre></li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>摘要：使用 SingleTask 退出App<br>]]>
+    
+    </summary>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[AndroidAnnotations的使用]]></title>

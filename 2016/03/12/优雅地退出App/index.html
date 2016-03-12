@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -47,18 +47,16 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="摘要：Hexo搭建Blog的过程">
+<meta name="description" content="摘要：使用 SingleTask 退出App">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的博客搭建好了！">
-<meta property="og:url" content="http://yoursite.com/2016/01/27/我的博客搭建好了/index.html">
+<meta property="og:title" content="优雅地退出 App！">
+<meta property="og:url" content="http://yoursite.com/2016/03/12/优雅地退出App/index.html">
 <meta property="og:site_name" content="hugh's blog">
-<meta property="og:description" content="摘要：Hexo搭建Blog的过程">
-<meta property="og:image" content="http://7xpu2r.com1.z0.glb.clouddn.com/%E6%8F%92%E4%BB%B6%E5%91%BD%E4%BB%A4%E8%A1%8C.jpg">
-<meta property="og:image" content="http://7xpu2r.com1.z0.glb.clouddn.com/deploy%E5%91%BD%E4%BB%A4%E8%A1%8C.jpg">
-<meta property="og:updated_time" content="2016-01-27T08:42:50.963Z">
+<meta property="og:description" content="摘要：使用 SingleTask 退出App">
+<meta property="og:updated_time" content="2016-03-12T03:27:46.148Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的博客搭建好了！">
-<meta name="twitter:description" content="摘要：Hexo搭建Blog的过程">
+<meta name="twitter:title" content="优雅地退出 App！">
+<meta name="twitter:description" content="摘要：使用 SingleTask 退出App">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -70,7 +68,7 @@
 
 
 
-  <title> 我的博客搭建好了！ | hugh's blog </title>
+  <title> 优雅地退出 App！ | hugh's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -216,7 +214,7 @@
             
             
               
-                我的博客搭建好了！
+                优雅地退出 App！
               
             
           </h1>
@@ -225,8 +223,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-01-27T16:42:50+08:00" content="2016-01-27">
-              2016-01-27
+            <time itemprop="dateCreated" datetime="2016-03-12T11:27:46+08:00" content="2016-03-12">
+              2016-03-12
             </time>
           </span>
 
@@ -236,8 +234,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/27/我的博客搭建好了/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/27/我的博客搭建好了/" itemprop="commentsCount"></span>
+                <a href="/2016/03/12/优雅地退出App/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/12/优雅地退出App/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -256,51 +254,36 @@
       
 
       
-        <span itemprop="articleBody"><p>摘要：Hexo搭建Blog的过程<br><a id="more"></a></p>
-<h2 id="u642D_u5EFA_u8FC7_u7A0B"><a href="#u642D_u5EFA_u8FC7_u7A0B" class="headerlink" title="搭建过程"></a>搭建过程</h2><h3 id="u5DE5_u5177_uFF1A"><a href="#u5DE5_u5177_uFF1A" class="headerlink" title="工具："></a>工具：</h3><ul>
-<li><a href="https://desktop.github.com/" target="_blank" rel="external">Github For Windows</a></li>
-<li><a href="https://git-scm.com/" target="_blank" rel="external">Git</a></li>
-<li><a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a></li>
-<li>Hexo （安装好上述软件之后）<ul>
-<li>打开Github下面的GitShell，输入下面的命令行：<ul>
-<li><code>npm install hexo-cli -g</code></li>
-<li><code>npm install hexo --save</code></li>
-</ul>
+        <span itemprop="articleBody"><p>摘要：使用 SingleTask 退出App<br><a id="more"></a></p>
+<p>###<a href="https://desktop.github.com/" target="_blank" rel="external">参考:soul_code的专栏 Android退出应用最优雅的方式(改进版)</a></p>
+<h4 id="SingleTask_3A__u5728_u5F53_u524D_u6808_u4E2D_u67E5_u8BE2_u662F_u5426_u5B58_u5728Activity_u7684_u5B9E_u4F8B_uFF0C_u5982_u679C_u5B58_u5728_uFF0C_u5219_u5C06_u5176_u81F3_u4E8E_u6808_u9876_uFF0C_u5E76_u5C06_u5176_u4E4B_u4E0A_u7684_u6240_u6709Activity_u6808_u79FB_u9664_u3002"><a href="#SingleTask_3A__u5728_u5F53_u524D_u6808_u4E2D_u67E5_u8BE2_u662F_u5426_u5B58_u5728Activity_u7684_u5B9E_u4F8B_uFF0C_u5982_u679C_u5B58_u5728_uFF0C_u5219_u5C06_u5176_u81F3_u4E8E_u6808_u9876_uFF0C_u5E76_u5C06_u5176_u4E4B_u4E0A_u7684_u6240_u6709Activity_u6808_u79FB_u9664_u3002" class="headerlink" title="SingleTask: 在当前栈中查询是否存在Activity的实例，如果存在，则将其至于栈顶，并将其之上的所有Activity栈移除。"></a>SingleTask: 在当前栈中查询是否存在Activity的实例，如果存在，则将其至于栈顶，并将其之上的所有Activity栈移除。</h4><p>###思路</p>
+<ol>
+<li><p>设置MainActivity的加载模式为 singleTask</p>
+<p> <code>android:launchMode=&quot;singleTask&quot;</code></p>
 </li>
-</ul>
-</li>
-</ul>
-<h3 id="u521D_u59CB_u5316_u914D_u7F6E"><a href="#u521D_u59CB_u5316_u914D_u7F6E" class="headerlink" title="初始化配置"></a>初始化配置</h3><ol>
-<li>创建目录如：<code>E:\myblog\hexo</code></li>
-<li>GitShell中定位到该目录输入下面的命令行，folder 即<strong>tohugh.github.io</strong><ol>
-<li><code>hexo init &lt;folder&gt;</code></li>
-<li><code>cd &lt;folder&gt;</code></li>
-<li><code>npm install</code></li>
-</ol>
-</li>
-<li><p>安装hexo插件</p>
-<p> <img src="http://7xpu2r.com1.z0.glb.clouddn.com/%E6%8F%92%E4%BB%B6%E5%91%BD%E4%BB%A4%E8%A1%8C.jpg" alt=""></p>
-</li>
-<li><p>查看效果：输入命令行<code>hexo server</code>，浏览器地址栏输入<code>localhost:4000</code></p>
-</li>
-</ol>
-<h3 id="u540C_u6B65_u5230Github"><a href="#u540C_u6B65_u5230Github" class="headerlink" title="同步到Github"></a>同步到Github</h3><ul>
-<li><p>配置deployment</p>
-<pre><code>- git config --global user.name &quot;yourname&quot;
-- git config --global user.email &quot;youremail&quot;
+<li><p>重写MainActivity中的onNewIntent方法</p>
+<p> <code>注意：如果在栈中已经有该Activity的实例，就重用该实例(会调用实例的onNewIntent())。重用时，会让该实例回到栈顶，因此在它上面的实例将会被移除栈。如果栈中不存在该实例，将会创建新的实例放入栈中（此时不会调用onNewIntent()）。</code></p>
+<pre><code>private static final String TAG_EXIT = &quot;exit&quot;;    
+
+@Override
+protected void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
+    if (intent != null) {
+        boolean isExit = intent.getBooleanExtra(TAG_EXIT, false);
+        if (isExit) {
+            this.finish();
+        }
+    }
+}
 </code></pre></li>
-<li><p>在_config.yml文件中，找到Deployment，然后按照如下修改：<br>  <img src="http://7xpu2r.com1.z0.glb.clouddn.com/deploy%E5%91%BD%E4%BB%A4%E8%A1%8C.jpg" alt=""></p>
-</li>
-<li><code>hexo g</code> 生成静态网页</li>
-<li><code>hexo d</code> 开始部署</li>
-</ul>
-<h3 id="u5199_u65B0_u7684_u535A_u5BA2"><a href="#u5199_u65B0_u7684_u535A_u5BA2" class="headerlink" title="写新的博客"></a>写新的博客</h3><ul>
-<li>在<code>source\_posts</code>目录下新建<code>.md</code> 文件，在<code>xx.github.io</code>目录下<code>git bash here</code>，然后就…..可以了!</li>
-</ul>
-<h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="http://wsgzao.github.io/post/hexo-guide/#" target="_blank" rel="external">使用GitHub和Hexo搭建免费静态Blog</a></li>
-<li><a href="http://blog.shijinrong.cn/2016/01/03/2016-01-03-how-to-build-blog/" target="_blank" rel="external">如何使用10个小时搭建出个人域名而又Geek的独立博客？</a></li>
-</ul>
+</ol>
+<ol>
+<li><p>需要退出时在Intent中添加退出的tag</p>
+<pre><code>Intent intent = new Intent(this,MainActivity.class);
+intent.putExtra(MainActivity.TAG_EXIT, true);
+startActivity(intent);
+</code></pre></li>
+</ol>
 </span>
       
     </div>
@@ -309,7 +292,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag">#hexo</a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
         </div>
       
@@ -318,13 +301,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/03/10/AndroidAnnotations的使用/" rel="next" title="AndroidAnnotations的使用">
+                <i class="fa fa-chevron-left"></i> AndroidAnnotations的使用
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/01/27/Android生成缩略图/" rel="prev" title="Android,获取图片和视频的缩略图">
-                Android,获取图片和视频的缩略图 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -349,8 +332,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2016/01/27/我的博客搭建好了/"
-                   data-title="我的博客搭建好了！" data-url="http://yoursite.com/2016/01/27/我的博客搭建好了/">
+              <div class="ds-thread" data-thread-key="2016/03/12/优雅地退出App/"
+                   data-title="优雅地退出 App！" data-url="http://yoursite.com/2016/03/12/优雅地退出App/">
               </div>
             
           </div>
@@ -456,7 +439,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u642D_u5EFA_u8FC7_u7A0B"><span class="nav-number">1.</span> <span class="nav-text">搭建过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5DE5_u5177_uFF1A"><span class="nav-number">1.1.</span> <span class="nav-text">工具：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u521D_u59CB_u5316_u914D_u7F6E"><span class="nav-number">1.2.</span> <span class="nav-text">初始化配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u540C_u6B65_u5230Github"><span class="nav-number">1.3.</span> <span class="nav-text">同步到Github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5199_u65B0_u7684_u535A_u5BA2"><span class="nav-number">1.4.</span> <span class="nav-text">写新的博客</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u53C2_u8003_u8D44_u6599"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#SingleTask_3A__u5728_u5F53_u524D_u6808_u4E2D_u67E5_u8BE2_u662F_u5426_u5B58_u5728Activity_u7684_u5B9E_u4F8B_uFF0C_u5982_u679C_u5B58_u5728_uFF0C_u5219_u5C06_u5176_u81F3_u4E8E_u6808_u9876_uFF0C_u5E76_u5C06_u5176_u4E4B_u4E0A_u7684_u6240_u6709Activity_u6808_u79FB_u9664_u3002"><span class="nav-number">1.</span> <span class="nav-text">SingleTask: 在当前栈中查询是否存在Activity的实例，如果存在，则将其至于栈顶，并将其之上的所有Activity栈移除。</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
