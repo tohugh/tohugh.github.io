@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-12T03:27:46.148Z</updated>
+  <updated>2016-03-12T03:31:50.419Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -18,12 +18,10 @@
     <title><![CDATA[优雅地退出 App！]]></title>
     <link href="http://yoursite.com/2016/03/12/%E4%BC%98%E9%9B%85%E5%9C%B0%E9%80%80%E5%87%BAApp/"/>
     <id>http://yoursite.com/2016/03/12/优雅地退出App/</id>
-    <published>2016-03-12T03:27:46.148Z</published>
-    <updated>2016-03-12T03:27:46.148Z</updated>
+    <published>2016-03-12T03:31:50.419Z</published>
+    <updated>2016-03-12T03:31:50.419Z</updated>
     <content type="html"><![CDATA[<p>摘要：使用 SingleTask 退出App<br><a id="more"></a></p>
-<p>###<a href="https://desktop.github.com/" target="_blank" rel="external">参考:soul_code的专栏 Android退出应用最优雅的方式(改进版)</a></p>
-<h4 id="SingleTask_3A__u5728_u5F53_u524D_u6808_u4E2D_u67E5_u8BE2_u662F_u5426_u5B58_u5728Activity_u7684_u5B9E_u4F8B_uFF0C_u5982_u679C_u5B58_u5728_uFF0C_u5219_u5C06_u5176_u81F3_u4E8E_u6808_u9876_uFF0C_u5E76_u5C06_u5176_u4E4B_u4E0A_u7684_u6240_u6709Activity_u6808_u79FB_u9664_u3002"><a href="#SingleTask_3A__u5728_u5F53_u524D_u6808_u4E2D_u67E5_u8BE2_u662F_u5426_u5B58_u5728Activity_u7684_u5B9E_u4F8B_uFF0C_u5982_u679C_u5B58_u5728_uFF0C_u5219_u5C06_u5176_u81F3_u4E8E_u6808_u9876_uFF0C_u5E76_u5C06_u5176_u4E4B_u4E0A_u7684_u6240_u6709Activity_u6808_u79FB_u9664_u3002" class="headerlink" title="SingleTask: 在当前栈中查询是否存在Activity的实例，如果存在，则将其至于栈顶，并将其之上的所有Activity栈移除。"></a>SingleTask: 在当前栈中查询是否存在Activity的实例，如果存在，则将其至于栈顶，并将其之上的所有Activity栈移除。</h4><p>###思路</p>
-<ol>
+<h3 id="u53C2_u8003_3Asoul_code_u7684_u4E13_u680F_Android_u9000_u51FA_u5E94_u7528_u6700_u4F18_u96C5_u7684_u65B9_u5F0F_28_u6539_u8FDB_u7248_29"><a href="#u53C2_u8003_3Asoul_code_u7684_u4E13_u680F_Android_u9000_u51FA_u5E94_u7528_u6700_u4F18_u96C5_u7684_u65B9_u5F0F_28_u6539_u8FDB_u7248_29" class="headerlink" title="参考:soul_code的专栏 Android退出应用最优雅的方式(改进版)"></a><a href="https://desktop.github.com/" target="_blank" rel="external">参考:soul_code的专栏 Android退出应用最优雅的方式(改进版)</a></h3><h4 id="SingleTask_3A__u5728_u5F53_u524D_u6808_u4E2D_u67E5_u8BE2_u662F_u5426_u5B58_u5728Activity_u7684_u5B9E_u4F8B_uFF0C_u5982_u679C_u5B58_u5728_uFF0C_u5219_u5C06_u5176_u81F3_u4E8E_u6808_u9876_uFF0C_u5E76_u5C06_u5176_u4E4B_u4E0A_u7684_u6240_u6709Activity_u6808_u79FB_u9664_u3002"><a href="#SingleTask_3A__u5728_u5F53_u524D_u6808_u4E2D_u67E5_u8BE2_u662F_u5426_u5B58_u5728Activity_u7684_u5B9E_u4F8B_uFF0C_u5982_u679C_u5B58_u5728_uFF0C_u5219_u5C06_u5176_u81F3_u4E8E_u6808_u9876_uFF0C_u5E76_u5C06_u5176_u4E4B_u4E0A_u7684_u6240_u6709Activity_u6808_u79FB_u9664_u3002" class="headerlink" title="SingleTask: 在当前栈中查询是否存在Activity的实例，如果存在，则将其至于栈顶，并将其之上的所有Activity栈移除。"></a>SingleTask: 在当前栈中查询是否存在Activity的实例，如果存在，则将其至于栈顶，并将其之上的所有Activity栈移除。</h4><h3 id="u601D_u8DEF"><a href="#u601D_u8DEF" class="headerlink" title="思路"></a>思路</h3><ol>
 <li><p>设置MainActivity的加载模式为 singleTask</p>
 <p> <code>android:launchMode=&quot;singleTask&quot;</code></p>
 </li>
