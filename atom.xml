@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-12T03:31:50.419Z</updated>
+  <updated>2018-03-25T05:47:35.876Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,23 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[两年没更博了]]></title>
+    <link href="http://yoursite.com/2018/03/25/%E4%B8%A4%E5%B9%B4%E6%B2%A1%E6%9B%B4%E5%8D%9A%E4%BA%86/"/>
+    <id>http://yoursite.com/2018/03/25/两年没更博了/</id>
+    <published>2018-03-25T05:47:48.408Z</published>
+    <updated>2018-03-25T05:47:35.876Z</updated>
+    <content type="html"><![CDATA[<p>摘要：我不知道我做了什么。<br><a id="more"></a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>摘要：我不知道我做了什么。<br>]]>
+    
+    </summary>
+    
+      <category term="思考" scheme="http://yoursite.com/tags/%E6%80%9D%E8%80%83/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[优雅地退出 App！]]></title>

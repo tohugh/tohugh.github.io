@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="Android，AndroidAnnotations," />
+  <meta name="keywords" content="思考," />
 
 
 
@@ -47,16 +47,16 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="摘要：AndroidAnnotations在AS中的环境搭建和注意事项。">
+<meta name="description" content="摘要：我不知道我做了什么。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AndroidAnnotations的使用">
-<meta property="og:url" content="http://yoursite.com/2016/03/10/AndroidAnnotations的使用/index.html">
+<meta property="og:title" content="两年没更博了">
+<meta property="og:url" content="http://yoursite.com/2018/03/25/两年没更博了/index.html">
 <meta property="og:site_name" content="Hugh's Blog">
-<meta property="og:description" content="摘要：AndroidAnnotations在AS中的环境搭建和注意事项。">
-<meta property="og:updated_time" content="2016-03-10T09:50:53.782Z">
+<meta property="og:description" content="摘要：我不知道我做了什么。">
+<meta property="og:updated_time" content="2018-03-25T05:47:35.876Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AndroidAnnotations的使用">
-<meta name="twitter:description" content="摘要：AndroidAnnotations在AS中的环境搭建和注意事项。">
+<meta name="twitter:title" content="两年没更博了">
+<meta name="twitter:description" content="摘要：我不知道我做了什么。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -68,7 +68,7 @@
 
 
 
-  <title> AndroidAnnotations的使用 | Hugh's Blog </title>
+  <title> 两年没更博了 | Hugh's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -214,7 +214,7 @@
             
             
               
-                AndroidAnnotations的使用
+                两年没更博了
               
             
           </h1>
@@ -223,8 +223,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-03-10T17:50:53+08:00" content="2016-03-10">
-              2016-03-10
+            <time itemprop="dateCreated" datetime="2018-03-25T13:47:48+08:00" content="2018-03-25">
+              2018-03-25
             </time>
           </span>
 
@@ -234,8 +234,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/10/AndroidAnnotations的使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/10/AndroidAnnotations的使用/" itemprop="commentsCount"></span>
+                <a href="/2018/03/25/两年没更博了/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/25/两年没更博了/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -254,107 +254,7 @@
       
 
       
-        <span itemprop="articleBody"><p>摘要：AndroidAnnotations在AS中的环境搭建和注意事项。<br><a id="more"></a></p>
-<p><strong>Github源码</strong>：<strong><a href="https://github.com/tohugh/MyAnnotationsDemo" target="_blank" rel="external">AndroidAnnotations的简单使用</a></strong></p>
-<h3 id="u73AF_u5883_u642D_u5EFA_3A"><a href="#u73AF_u5883_u642D_u5EFA_3A" class="headerlink" title="环境搭建:"></a>环境搭建:</h3><ol>
-<li><p>Project的build.gradle</p>
-<pre><code>buildscript {
-repositories {
-jcenter()
-}
-dependencies {
-classpath &apos;com.android.tools.build:gradle:1.3.0&apos;
-
-// NOTE: Do not place your application dependencies here; they belong
-// in the individual module build.gradle files
-
-//配置Android annotations
-classpath &apos;com.neenbedankt.gradle.plugins:android-apt:1.8&apos;
-}
-}
-</code></pre><p>关键词:<code>classpath &#39;com.neenbedankt.gradle.plugins:android-apt:1.8&#39;</code></p>
-</li>
-<li><p>Module的build.gradle</p>
-<pre><code>apply plugin: &apos;com.android.application&apos;
-//配置Android annotations
-apply plugin: &apos;android-apt&apos;
-def AAVersion = &apos;3.3.2&apos;
-
-android {
-    compileSdkVersion 23
-    buildToolsVersion &quot;23.0.2&quot;
-
-    defaultConfig {
-        applicationId &quot;com.hugh.myannotationsdemo&quot;
-        minSdkVersion 16
-        targetSdkVersion 23
-        versionCode 1
-        versionName &quot;1.0&quot;
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.pro&apos;
-        }
-    }
-}
-
-//配置Android annotations
-apt {
-    arguments {
-        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
-        // if you have multiple outputs (when using splits), you may want to have other index than 0
-
-        // you should set your package name here if you are using different application IDs
-        // resourcePackageName &quot;your.package.name&quot;
-
-        // You can set optional annotation processing options here, like these commented options:
-        // logLevel &apos;INFO&apos;
-        // logFile &apos;/var/log/aa.log&apos;
-    }
-}
-
-dependencies {
-    compile fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])
-    testCompile &apos;junit:junit:4.12&apos;
-    compile &apos;com.android.support:appcompat-v7:23.2.0&apos;
-    //配置Android annotations
-    apt &quot;org.androidannotations:androidannotations:$AAVersion&quot;
-    compile &quot;org.androidannotations:androidannotations-api:$AAVersion&quot;
-
-}
-</code></pre><p> 关键词：<br>`//配置Android annotations</p>
-<pre><code>    apply plugin: &apos;android-apt&apos;
-    def AAVersion = &apos;3.3.2&apos;`    
-
-//配置Android annotations
-apt {
-    arguments {
-        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
-        // if you have multiple outputs (when using splits), you may want to have other index than 0
-
-        // you should set your package name here if you are using different application IDs
-        // resourcePackageName &quot;your.package.name&quot;
-
-        // You can set optional annotation processing options here, like these commented options:
-        // logLevel &apos;INFO&apos;
-        // logFile &apos;/var/log/aa.log&apos;
-    }
-}
-
-//配置Android annotations
-    apt &quot;org.androidannotations:androidannotations:$AAVersion&quot;
-    compile &quot;org.androidannotations:androidannotations-api:$AAVersion&quot;
-</code></pre></li>
-<li><p>重新编译</p>
-</li>
-</ol>
-<h4 id="u6CE8_u610F_u4E8B_u9879_uFF1A"><a href="#u6CE8_u610F_u4E8B_u9879_uFF1A" class="headerlink" title="注意事项："></a>注意事项：</h4><ol>
-<li>注册同名的Activity_</li>
-<li>View的修饰符不能是private</li>
-<li>用注解注释的方法不能使private</li>
-<li>大型项目一般不适用此框架</li>
-</ol>
+        <span itemprop="articleBody"><p>摘要：我不知道我做了什么。<br><a id="more"></a></p>
 </span>
       
     </div>
@@ -363,7 +263,7 @@ apt {
       
         <div class="post-tags">
           
-            <a href="/tags/Android，AndroidAnnotations/" rel="tag">#Android，AndroidAnnotations</a>
+            <a href="/tags/思考/" rel="tag">#思考</a>
           
         </div>
       
@@ -372,17 +272,13 @@ apt {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/02/Material Design遇到的问题/" rel="next" title="Material Design遇到的问题">
-                <i class="fa fa-chevron-left"></i> Material Design遇到的问题
+              <a href="/2016/03/12/优雅地退出App/" rel="next" title="优雅地退出 App！">
+                <i class="fa fa-chevron-left"></i> 优雅地退出 App！
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/12/优雅地退出App/" rel="prev" title="优雅地退出 App！">
-                优雅地退出 App！ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -407,8 +303,8 @@ apt {
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2016/03/10/AndroidAnnotations的使用/"
-                   data-title="AndroidAnnotations的使用" data-url="http://yoursite.com/2016/03/10/AndroidAnnotations的使用/">
+              <div class="ds-thread" data-thread-key="2018/03/25/两年没更博了/"
+                   data-title="两年没更博了" data-url="http://yoursite.com/2018/03/25/两年没更博了/">
               </div>
             
           </div>
@@ -514,7 +410,7 @@ apt {
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u73AF_u5883_u642D_u5EFA_3A"><span class="nav-number">1.</span> <span class="nav-text">环境搭建:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u6CE8_u610F_u4E8B_u9879_uFF1A"><span class="nav-number">1.1.</span> <span class="nav-text">注意事项：</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
